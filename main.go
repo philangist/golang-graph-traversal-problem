@@ -15,13 +15,22 @@ func main (){
   E := graph.NewNode("E")
   F := graph.NewNode("F")
 
-  A.AddNeighbors([]graph.Node{B, C})
-  B.AddNeighbors([]graph.Node{C, D})
-  C.AddNeighbors([]graph.Node{D})
-  D.AddNeighbors([]graph.Node{C})
-  E.AddNeighbors([]graph.Node{F})
-  F.AddNeighbors([]graph.Node{C})
+  A.Neighbors = append(A.Neighbors, B)
+  A.Neighbors = append(A.Neighbors, C)
 
-  fmt.Println(A.Value)
+  B.Neighbors = append(B.Neighbors, C)
+  B.Neighbors = append(B.Neighbors, D)
+
+  C.Neighbors = append(C.Neighbors, D)
+  D.Neighbors = append(D.Neighbors, C)
+  E.Neighbors = append(E.Neighbors, F)
+  F.Neighbors = append(F.Neighbors, C)
+
+  fmt.Println("A.Neighbors is", A.Neighbors)
+  fmt.Println("B.Neighbors is", B.Neighbors)
+  fmt.Println("C.Neighbors is", C.Neighbors)
+  fmt.Println("D.Neighbors is", D.Neighbors)
+  fmt.Println("E.Neighbors is", E.Neighbors)
+  fmt.Println("F.Neighbors is", F.Neighbors)
 
 }
