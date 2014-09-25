@@ -1,36 +1,31 @@
 package main
 
 import (
-  "fmt"
+	"fmt"
 
-  "github.com/philangist/golang-graph-traversal-problem/graph"
+	"github.com/philangist/golang-graph-traversal-problem/graph"
 )
 
+func main() {
+	A := graph.NewNode("A")
+	B := graph.NewNode("B")
+	C := graph.NewNode("C")
+	D := graph.NewNode("D")
+	E := graph.NewNode("E")
+	F := graph.NewNode("F")
 
-func main (){
-  A := graph.NewNode("A")
-  B := graph.NewNode("B")
-  C := graph.NewNode("C")
-  D := graph.NewNode("D")
-  E := graph.NewNode("E")
-  F := graph.NewNode("F")
+	A.Neighbors = append(A.Neighbors, B)
+	A.Neighbors = append(A.Neighbors, C)
 
-  A.Neighbors = append(A.Neighbors, B)
-  A.Neighbors = append(A.Neighbors, C)
+	B.Neighbors = append(B.Neighbors, D)
+	B.Neighbors = append(B.Neighbors, E)
 
-  B.Neighbors = append(B.Neighbors, C)
-  B.Neighbors = append(B.Neighbors, D)
+	C.Neighbors = append(C.Neighbors, F)
 
-  C.Neighbors = append(C.Neighbors, D)
-  D.Neighbors = append(D.Neighbors, C)
-  E.Neighbors = append(E.Neighbors, F)
-  F.Neighbors = append(F.Neighbors, C)
-
-  fmt.Println("A.Neighbors is", A.Neighbors)
-  fmt.Println("B.Neighbors is", B.Neighbors)
-  fmt.Println("C.Neighbors is", C.Neighbors)
-  fmt.Println("D.Neighbors is", D.Neighbors)
-  fmt.Println("E.Neighbors is", E.Neighbors)
-  fmt.Println("F.Neighbors is", F.Neighbors)
+	fmt.Println("A.Neighbors is", D.Neighbors)
+	fmt.Println("B.Neighbors is", B.Neighbors)
+	fmt.Println("C.Neighbors is", C.Neighbors)
+	fmt.Println("The shortest path from A to D is",
+		graph.FindShortestPath(A, F, []graph.Node{}))
 
 }
